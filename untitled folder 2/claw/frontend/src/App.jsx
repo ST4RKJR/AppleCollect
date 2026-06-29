@@ -61,7 +61,7 @@ function App() {
 
   return (
     <div className="container">
-      <header className="flex items-center justify-between" style={{ marginBottom: '2rem' }}>
+      <header className="flex header-flex justify-between" style={{ marginBottom: '2rem' }}>
         <div>
           <h1 className="text-gradient" style={{ fontSize: '2.5rem' }}>Claw</h1>
           <p className="text-muted">Product Feedback to PRD Autonomous Agent</p>
@@ -83,7 +83,7 @@ function App() {
           <UploadCloud size={20} className="text-gradient" /> Ingest Feedback
         </h2>
         
-        <div className="flex gap-4" style={{ marginBottom: '1rem' }}>
+        <div className="flex btn-group gap-4" style={{ marginBottom: '1rem' }}>
           <button 
             className={`btn ${sourceType === 'text' ? 'btn-primary' : 'btn-secondary'}`}
             onClick={() => setSourceType('text')}
@@ -134,7 +134,7 @@ function App() {
         <div className="animate-fade-in">
           
           {/* Metrics Summary */}
-          <section className="grid grid-cols-4 gap-6" style={{ marginBottom: '2rem' }}>
+          <section className="grid grid-responsive gap-6" style={{ marginBottom: '2rem' }}>
             {Object.entries(analysisResult.summary).map(([key, value]) => (
               <div key={key} className="glass-panel flex-col items-center justify-center">
                 <span className="text-muted" style={{ textTransform: 'capitalize' }}>

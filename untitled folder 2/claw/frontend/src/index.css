@@ -35,6 +35,10 @@
   box-sizing: border-box;
 }
 
+html {
+  font-size: 16px; /* Ensure baseline font size to prevent massive scaling issues */
+}
+
 body {
   font-family: var(--font-sans);
   background-color: var(--bg-primary);
@@ -96,6 +100,7 @@ h1, h2, h3, h4 {
   border: none;
   outline: none;
   gap: 0.5rem;
+  white-space: nowrap;
 }
 
 .btn-primary {
@@ -153,30 +158,35 @@ textarea.input-field {
 .container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 2rem;
+  padding: 2rem 1rem;
 }
 
 .flex { display: flex; }
 .flex-col { display: flex; flex-direction: column; }
+.flex-wrap { flex-wrap: wrap; }
 .items-center { align-items: center; }
 .justify-between { justify-content: space-between; }
 .justify-center { justify-content: center; }
 .gap-2 { gap: 0.5rem; }
 .gap-4 { gap: 1rem; }
 .gap-6 { gap: 1.5rem; }
-.grid { display: grid; }
-.grid-cols-2 { grid-template-columns: repeat(2, 1fr); }
-.grid-cols-4 { grid-template-columns: repeat(4, 1fr); }
+
+.grid { display: grid; gap: 1.5rem; }
+/* Responsive grid */
+.grid-responsive {
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
 
 /* Badges */
 .badge {
   display: inline-block;
-  padding: 0.25rem 0.75rem;
+  padding: 0.4rem 0.8rem;
   border-radius: 9999px;
   font-size: 0.75rem;
   font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 0.05em;
+  white-space: nowrap;
 }
 
 .badge.bug { background: rgba(239, 68, 68, 0.15); color: #fca5a5; border: 1px solid rgba(239, 68, 68, 0.3); }
@@ -193,12 +203,14 @@ textarea.input-field {
   overflow-x: auto;
   border-radius: 8px;
   border: 1px solid var(--border-color);
+  background: rgba(0, 0, 0, 0.1);
 }
 
 table {
   width: 100%;
   border-collapse: collapse;
   text-align: left;
+  min-width: 600px; /* Ensure table doesn't squash too much */
 }
 
 th {
@@ -213,6 +225,7 @@ td {
   padding: 1rem;
   border-bottom: 1px solid rgba(255, 255, 255, 0.05);
   color: var(--text-primary);
+  vertical-align: top;
 }
 
 tr:last-child td {
@@ -267,4 +280,26 @@ tr:hover td {
 }
 .markdown-body strong {
   color: #fff;
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+  .header-flex {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+  
+  .btn-group {
+    flex-direction: column;
+    width: 100%;
+  }
+  
+  .btn-group .btn {
+    width: 100%;
+  }
+  
+  h1 {
+    font-size: 2rem !important; /* Scale down title slightly on mobile */
+  }
 }
